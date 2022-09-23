@@ -1,0 +1,6 @@
+refs:
+    - pip://nmk-vscode!plugin.yml
+
+config:
+    vscodeLaunchFiles:
+        - - ${BASEDIR}/sample_launch.json

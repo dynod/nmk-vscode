@@ -24,4 +24,9 @@ class TestVSCodePlugin(NmkBaseTester):
                 + "} }",
             ],
         )
-        assert self.test_folder / ".vscode" / "settings.json"
+        assert (self.test_folder / ".vscode" / "settings.json").is_file()
+
+    def test_launch(self):
+        self.prepare_project("sample_launch.json")
+        self.nmk(self.prepare_project("ref_vscode_launch.yml"))
+        assert (self.test_folder / ".vscode" / "launch.json").is_file()

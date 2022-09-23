@@ -2,6 +2,7 @@
 refs:
     - python.yml    # Python path contribution
     - settings.yml  # VSCode settings generation
+    - launch.yml    # VSCode launch configs generation
 
 config:
     # Plugin version
