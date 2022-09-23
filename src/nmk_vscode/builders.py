@@ -5,7 +5,7 @@ from typing import List
 from nmk_base.common import TemplateBuilder
 
 
-class SettingsBuilder(TemplateBuilder):
+class JsonTemplateBuilder(TemplateBuilder):
     def contribute(self, settings: dict, update: dict):
         for k, v in update.items():
             # Already exists in target model?
@@ -23,17 +23,28 @@ class SettingsBuilder(TemplateBuilder):
                 # New key
                 settings[k] = v
 
-    def build(self, files: List[str], items: dict):
+    def build_json(self, files: List[str], items: dict = None):
         # Iterate on files to merge them
-        settings = {}
+        json_model = {}
         for file_p in map(Path, files):
-            self.logger.debug(f"Loading settings fragment: {file_p}")
-            self.contribute(settings, json.loads(self.render_template(file_p, {})))
+            self.logger.debug(f"Loading json model fragment: {file_p}")
+            self.contribute(json_model, json.loads(self.render_template(file_p, {})))
 
-        # Post-process with raw provided items
-        self.logger.debug(f"Update settings from config: {items}")
-        self.contribute(settings, items)
+        # Post-process with raw provided items (if any)
+        if items is not None:
+            self.logger.debug(f"Update json model from config: {items}")
+            self.contribute(json_model, items)
 
-        # Generate settings file
+        # Generate json_model file
         with self.main_output.open("w") as f:
-            json.dump(settings, f, indent=4)
+            json.dump(json_model, f, indent=4)
+
+
+class SettingsBuilder(JsonTemplateBuilder):
+    def build(self, files: List[str], items: dict):
+        self.build_json(files, items)
+
+
+class LaunchBuilder(JsonTemplateBuilder):
+    def build(self, files: List[str]):
+        self.build_json(files)

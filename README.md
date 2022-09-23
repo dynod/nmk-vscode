@@ -6,9 +6,13 @@ VSCode plugin for nmk build system
 [![PyPI](https://img.shields.io/pypi/v/nmk-vscode)](https://pypi.org/project/nmk-vscode/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+This plugin helps to generate various VS Code files for an easier integration:
+- settings
+- launch
+
 ## Usage
 
-To reference this plug-in in your **`nmk`** project, insert this reference:
+To use this plugin in your **`nmk`** project, insert this reference:
 ```
 refs:
     - pip://nmk-vscode!plugin.yml
