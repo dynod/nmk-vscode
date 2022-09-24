@@ -30,3 +30,7 @@ class TestVSCodePlugin(NmkBaseTester):
         self.prepare_project("sample_launch.json")
         self.nmk(self.prepare_project("ref_vscode_launch.yml"))
         assert (self.test_folder / ".vscode" / "launch.json").is_file()
+
+    def test_tasks(self):
+        self.nmk(self.prepare_project("ref_vscode.yml"))
+        assert (self.test_folder / ".vscode" / "tasks.json").is_file()

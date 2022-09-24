@@ -12,10 +12,6 @@ config:
     # Dict of VSCode settings items to be merged
     vscodeSettingsItems: {}
 
-    # Ignore generated files
-    gitIgnoredFiles:
-        - ${vscodeSettings}
-
 tasks:
     # Create VSCode folder
     vs.folder:
