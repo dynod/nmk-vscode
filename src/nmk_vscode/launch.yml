@@ -5,10 +5,6 @@ config:
     # List of VSCode launch configs files to be merged
     vscodeLaunchFiles: []
 
-    # Ignore generated files
-    gitIgnoredFiles:
-        - ${vscodeLaunch}
-
 tasks:
     # Launch configs generation
     vs.launch:

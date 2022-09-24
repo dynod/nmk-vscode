@@ -22,3 +22,6 @@ config:
             description: VSCode plugin for nmk build system
         options.package_data:
             nmk_vscode: "*.yml,*.json"
+            nmk_vscode.templates: "*"
+        run:
+            omit: "src/tests/*,src/nmk_vscode/templates/*"

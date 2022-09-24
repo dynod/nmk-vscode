@@ -3,5 +3,6 @@
         "**/venv/**": true
     },
     "editor.formatOnSave": true,
-    "cSpell.words": []
+    "cSpell.words": [],
+    "task.allowAutomaticTasks": "on"
 }
