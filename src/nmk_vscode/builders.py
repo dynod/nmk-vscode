@@ -61,3 +61,8 @@ class TasksBuilder(JsonTemplateBuilder):
 
         # Build with keyword
         self.build_json([nmk_task_template] + files, keywords={"nmkTasks": nmk_tasks, "defaultTask": default_task})
+
+
+class ExtensionsBuilder(JsonTemplateBuilder):
+    def build(self, names: List[str]):
+        self.build_json([], {"recommendations": names})

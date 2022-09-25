@@ -34,3 +34,14 @@ class TestVSCodePlugin(NmkBaseTester):
     def test_tasks(self):
         self.nmk(self.prepare_project("ref_vscode.yml"))
         assert (self.test_folder / ".vscode" / "tasks.json").is_file()
+
+    def test_extensions(self):
+        self.nmk(
+            self.prepare_project("ref_vscode.yml"),
+            extra_args=[
+                "vs.extensions",
+                "--config",
+                '{"vscodeExtensionsNames": ["foo"] }',
+            ],
+        )
+        assert (self.test_folder / ".vscode" / "extensions.json").is_file()
