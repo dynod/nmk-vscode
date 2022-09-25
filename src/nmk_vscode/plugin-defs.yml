@@ -1,9 +1,10 @@
 # Python plugin definition
 refs:
-    - python.yml    # Python path contribution
-    - settings.yml  # VSCode settings generation
-    - launch.yml    # VSCode launch configs generation
-    - tasks.yml     # VSCode tasks generation
+    - python.yml        # Python path contribution
+    - settings.yml      # VSCode settings generation
+    - launch.yml        # VSCode launch configs generation
+    - tasks.yml         # VSCode tasks generation
+    - extensions.yml    # VSCode recommended extensions generation
 
 config:
     # Plugin version
