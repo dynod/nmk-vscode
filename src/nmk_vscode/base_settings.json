@@ -4,5 +4,6 @@
     },
     "editor.formatOnSave": true,
     "cSpell.words": [],
-    "task.allowAutomaticTasks": "on"
+    "task.allowAutomaticTasks": "on",
+    "terminal.integrated.defaultProfile.windows": "Git Bash"
 }

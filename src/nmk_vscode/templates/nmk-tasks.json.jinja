@@ -5,9 +5,6 @@
             "label": "nmk {{ name }}",
             "type": "shell",
             "command": "source loadme.sh nmk {{ name }}",
-            "windows": {
-                "command": "loadme.bat nmk {{ name }}"
-            },
             "group": {% if name == defaultTask %}{
                 "kind": "{{ nmkTasks[name].group }}",
                 "isDefault": true
