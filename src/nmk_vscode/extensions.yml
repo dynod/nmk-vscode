@@ -14,6 +14,7 @@ tasks:
         if: ${vscodeExtensionsNames}
         deps:
             - vs.folder
+        input: ${BASEDIR}/extensions.yml
         output: ${vscodeExtensions}
         params:
             names: ${vscodeExtensionsNames}
