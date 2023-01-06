@@ -1,14 +1,18 @@
 # nmk-vscode
 VSCode plugin for nmk build system
 
+<!-- NMK-BADGES-BEGIN -->
 [![License: MPL](https://img.shields.io/github/license/dynod/nmk-vscode)](https://github.com/dynod/nmk-vscode/blob/main/LICENSE)
-[![Checks](https://img.shields.io/github/workflow/status/dynod/nmk-vscode/Build/main?label=build%20%26%20u.t.)](https://github.com/dynod/nmk-vscode/actions?query=branch%3Amain)
+[![Checks](https://img.shields.io/github/actions/workflow/status/dynod/nmk-vscode/build.yml?branch=main&label=build%20%26%20u.t.)](https://github.com/dynod/nmk-vscode/actions?query=branch%3Amain)
 [![PyPI](https://img.shields.io/pypi/v/nmk-vscode)](https://pypi.org/project/nmk-vscode/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+<!-- NMK-BADGES-END -->
 
 This plugin helps to generate various VS Code files for an easier integration:
 - settings
 - launch
+- tasks
+- recommended extensions
 
 ## Usage
 
