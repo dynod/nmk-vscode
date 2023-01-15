@@ -26,3 +26,7 @@ config:
             nmk_vscode.templates: "*"
         run:
             omit: "src/tests/*,src/nmk_vscode/templates/*"
+
+    # Github issues logged in nmk project
+    githubIssuesRepo: nmk
+    githubIssuesLabel: "plugin:vscode"
