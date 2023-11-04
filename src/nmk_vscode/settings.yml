@@ -18,7 +18,7 @@ tasks:
         description: Create VSCode folder
         emoji: ":laptop_computer:.:file_folder:"
         silent: true
-        builder: nmk_base.output.OutputMkdir
+        builder: nmk_base.common.MkdirBuilder
         output: ${vscodeFolder}
         appendToDeps: setup
 
