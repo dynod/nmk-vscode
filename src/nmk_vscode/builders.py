@@ -1,3 +1,7 @@
+"""
+Python module for **nmk-vscode** plugin builders.
+"""
+
 import json
 from pathlib import Path
 from typing import List
@@ -6,7 +10,23 @@ from nmk_base.common import TemplateBuilder
 
 
 class JsonTemplateBuilder(TemplateBuilder):
+    """
+    Generic build logic to generate VSCode json config files
+    """
+
     def contribute(self, settings: dict, update: dict):
+        """
+        Merge settings from **update** dictionary into **settings** one.
+        Merge logic for existing settings is:
+
+        * for lists: new settings are appended after existing ones
+        * for dictionaries: existing dictionary is updated with new one content
+        * for other types: existing values are replaces with new ones
+
+        :param settings: Settings dictionary to be updated
+        :param settings: Update dictionary to be merged into the existing one
+        """
+
         for k, v in update.items():
             # Already exists in target model?
             if k in settings:
@@ -24,6 +44,14 @@ class JsonTemplateBuilder(TemplateBuilder):
                 settings[k] = v
 
     def build_json(self, files: List[str], items: dict = None, keywords: dict = None):
+        """
+        Generate target json file by merging provided files, then items (if any)
+
+        :param files: List of input json files to be rendered (as Jinja templates) then merged
+        :param items: Dictionary to be merged in generated json file
+        :param keywords: Keywords for Jinja rendering
+        """
+
         # Iterate on files to merge them
         json_model = {}
         for file_p in map(Path, files):
@@ -43,17 +71,49 @@ class JsonTemplateBuilder(TemplateBuilder):
 
 
 class SettingsBuilder(JsonTemplateBuilder):
+    """
+    Builder for **vs.settings** task
+    """
+
     def build(self, files: List[str], items: dict):
+        """
+        Build logic: merge provided settings files and items
+
+        :param files: Settings files to be merged
+        :param items: Settings items to be merged
+        """
         self.build_json(files, items)
 
 
 class LaunchBuilder(JsonTemplateBuilder):
+    """
+    Builder for **vs.launch** task
+    """
+
     def build(self, files: List[str]):
+        """
+        Build logic: merge provided launch configuration files
+
+        :param files: Launch configuration files to be merged
+        """
         self.build_json(files)
 
 
 class TasksBuilder(JsonTemplateBuilder):
+    """
+    Builder for **vs.tasks** task
+    """
+
     def build(self, files: List[str], nmk_task_template: str, nmk_tasks: dict, default_task: str):
+        """
+        Build logic: merge provided automated tasks files, then add generated nmk automated tasks
+
+        :param files: Automated tasks files to be merged
+        :param nmk_task_template: Path to Jinja template for nmk tasks
+        :param nmk_tasks: Dictionary for nmk tasks definitions
+        :param default_task: Name of task to be declared as the default one in generated file
+        """
+
         # Handle default values in nmk tasks
         for props in nmk_tasks.values():
             props["group"] = props["group"] if "group" in props else "build"
@@ -64,5 +124,14 @@ class TasksBuilder(JsonTemplateBuilder):
 
 
 class ExtensionsBuilder(JsonTemplateBuilder):
+    """
+    Builder for **vs.extensions** task
+    """
+
     def build(self, names: List[str]):
+        """
+        Build logic: generated recommended extensions file from provided names
+
+        :param names: Extension names to be added in the generated file
+        """
         self.build_json([], {"recommendations": names})

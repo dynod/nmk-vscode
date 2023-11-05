@@ -17,4 +17,4 @@ config:
 
     # Plugin help links dict
     nmkPluginsDocs:
-        nmk-vscode: https://github.com/dynod/nmk/wiki/nmk-vscode-plugin
+        nmk-vscode: https://nmk-vscode.readthedocs.io/
