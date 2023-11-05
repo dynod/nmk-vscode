@@ -1,3 +1,7 @@
+"""
+Python module for **nmk-vscode** plugin code.
+"""
+
 from configparser import ConfigParser
 from pathlib import Path
 
@@ -19,5 +23,14 @@ except DistributionNotFound:  # pragma: no cover
 
 
 class NmkVSCodeVersionResolver(VersionResolver):
+    """
+    Version resolver for **${nmkVSCodePluginVersion}**
+    """
+
     def get_version(self) -> str:
+        """
+        Module version accessor
+
+        :return: current module version
+        """
         return __version__
