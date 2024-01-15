@@ -4,7 +4,7 @@
     {% if loop.index > 1 %},{% endif %}{
             "label": "nmk {{ name }}",
             "type": "shell",
-            "command": "source loadme.sh nmk {{ name }}",
+            "command": "./buildenv.sh run nmk {{ name }}",
             "group": {% if name == defaultTask %}{
                 "kind": "{{ nmkTasks[name].group }}",
                 "isDefault": true
