@@ -6,7 +6,7 @@ config:
     vscodeTasksFiles: []
 
     # Template for nmk specific tasks
-    vscodeNmkTaskTemplate: ${BASEDIR}/templates/nmk-tasks.json.jinja
+    vscodeTaskTemplate: ${BASEDIR}/templates/tasks.json.jinja
 
     # List of "nmk" specific tasks to generate
     vscodeNmkTasks:
@@ -16,9 +16,13 @@ config:
             group: build
         tests:
             group: test
+
+    # List of shell tasks to generate
+    vscodeShellTasks:
         setup:
             group: build
             runOn: folderOpen
+            command: ./buildenv.sh init
 
     # Default build task
     vscodeDefaultBuildTask: build
@@ -33,11 +37,12 @@ tasks:
             - vs.folder
         input:
             - ${vscodeTasksFiles}
-            - ${vscodeNmkTaskTemplate}
+            - ${vscodeTaskTemplate}
         output: ${vscodeTasks}
         params:
             files: ${vscodeTasksFiles}
-            nmk_task_template: ${vscodeNmkTaskTemplate}
+            task_template: ${vscodeTaskTemplate}
             nmk_tasks: ${vscodeNmkTasks}
+            shell_tasks: ${vscodeShellTasks}
             default_task: ${vscodeDefaultBuildTask}
         builder: nmk_vscode.builders.TasksBuilder

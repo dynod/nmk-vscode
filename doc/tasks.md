@@ -62,7 +62,7 @@ This task generates the [VSCode workspace custom tasks file](https://code.visual
 | Property | Value/description |
 |-         |-
 | builder  | {py:class}`nmk_vscode.builders.TasksBuilder`
-| inputs    | {ref}`${vscodeTasksFiles}<vscodeTasksFiles>` files <br>{ref}`${vscodeNmkTaskTemplate}<vscodeNmkTaskTemplate>` file
+| inputs    | {ref}`${vscodeTasksFiles}<vscodeTasksFiles>` files <br>{ref}`${vscodeTaskTemplate}<vscodeTaskTemplate>` file
 | output   | {ref}`${vscodeTasks}<vscodeTasks>` file
 | deps     | {ref}`vs.folder<vs.folder>` task
 
@@ -71,8 +71,9 @@ The builder is called with the following parameters mapping:
 | Name | Value |
 |- |-
 | files | **{ref}`${vscodeTasksFiles}<vscodeTasksFiles>`**
-| nmk_task_template | **{ref}`${vscodeNmkTaskTemplate}<vscodeNmkTaskTemplate>`**
+| task_template | **{ref}`${vscodeTaskTemplate}<vscodeTaskTemplate>`**
 | nmk_tasks | **{ref}`${vscodeNmkTasks}<vscodeNmkTasks>`**
+| shell_tasks | **{ref}`${vscodeShellTasks}<vscodeShellTasks>`**
 | default_task | **{ref}`${vscodeDefaultBuildTask}<vscodeDefaultBuildTask>`**
 
 (vs.launch)=

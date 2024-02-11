@@ -104,13 +104,14 @@ class TasksBuilder(JsonTemplateBuilder):
     Builder for **vs.tasks** task
     """
 
-    def build(self, files: List[str], nmk_task_template: str, nmk_tasks: dict, default_task: str):
+    def build(self, files: List[str], task_template: str, nmk_tasks: dict, shell_tasks: dict, default_task: str):
         """
         Build logic: merge provided automated tasks files, then add generated nmk automated tasks
 
         :param files: Automated tasks files to be merged
-        :param nmk_task_template: Path to Jinja template for nmk tasks
+        :param task_template: Path to Jinja template for nmk tasks
         :param nmk_tasks: Dictionary for nmk tasks definitions
+        :param shell_tasks: Dictionary for shell tasks definitions
         :param default_task: Name of task to be declared as the default one in generated file
         """
 
@@ -120,7 +121,7 @@ class TasksBuilder(JsonTemplateBuilder):
             props["runOn"] = props["runOn"] if "runOn" in props else "default"
 
         # Build with keyword
-        self.build_json([nmk_task_template] + files, keywords={"nmkTasks": nmk_tasks, "defaultTask": default_task})
+        self.build_json([task_template] + files, keywords={"nmkTasks": nmk_tasks, "shellTasks": shell_tasks, "defaultTask": default_task})
 
 
 class ExtensionsBuilder(JsonTemplateBuilder):
