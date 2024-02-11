@@ -82,8 +82,8 @@ This is the generated [VSCode workspace custom tasks file](https://code.visualst
 
 This is a list of VSCode task files to be merged into the target {ref}`${vscodeTasks}<vscodeTasks>` generated one.
 
-(vscodeNmkTaskTemplate)=
-### **`vscodeNmkTaskTemplate`** -- nmk task template file
+(vscodeTaskTemplate)=
+### **`vscodeTaskTemplate`** -- nmk task template file
 
 | Type | Default value |
 |-     |-
@@ -99,6 +99,15 @@ This is the template file for generated nmk tasks.
 | Dict[str,Dict[str,str]]  | see tasks.yml
 
 This a dictionary defining the nmk tasks to be generated into the target {ref}`${vscodeTasks}<vscodeTasks>` generated task file.
+
+(vscodeShellTasks)=
+### **`vscodeShellTasks`** -- VSCode shell tasks definition
+
+| Type | Default value |
+|-     |-
+| Dict[str,Dict[str,str]]  | see tasks.yml
+
+This a dictionary defining the simple shell tasks to be generated into the target {ref}`${vscodeTasks}<vscodeTasks>` generated task file.
 
 (vscodeDefaultBuildTask)=
 ### **`vscodeDefaultBuildTask`** -- Default build task
