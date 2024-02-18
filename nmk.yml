@@ -4,7 +4,7 @@ refs:
     - pip://nmk-github!plugin.yml
     - pip://nmk-python!plugin.yml
     - pip://nmk-doc!plugin.yml
-    - src/nmk_vscode/plugin.yml
+    - src/nmk_vscode/plugin-local.yml
     - <workspace>/shared.yml
     - workspace:
         local: ../../../../shared
@@ -25,6 +25,8 @@ config:
         options.package_data:
             nmk_vscode: "*.yml,*.json"
             nmk_vscode.templates: "*"
+        options.entry_points:
+            buildenv_init: "\nnmk-vscode = nmk_vscode.buildenv:BuildEnvInit"
         run:
             omit: "src/tests/*,src/nmk_vscode/templates/*"
 

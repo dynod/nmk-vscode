@@ -53,6 +53,15 @@ Following config items may be extended for that purpose:
           group: build
           runOn: xxx
   ```
+* **{ref}`${vscodeShellTasks}<vscodeShellTasks>`**: Dictionary of simple tasks definitions to be merged into the generated automated tasks file.
+  Example:
+  ```yaml
+  vscodeShellTasks:
+      taskName:
+          group: build
+          runOn: folderOpen
+          command: ./buildenv.sh init
+  ```
 
 ## Launch configurations
 

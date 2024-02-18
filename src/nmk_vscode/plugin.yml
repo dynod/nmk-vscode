@@ -1,4 +1,4 @@
-# Python plugin definition
+# Python plugin definition (for pip reference)
 refs:
     # Needs base plugin
     - pip://nmk-base!plugin.yml
