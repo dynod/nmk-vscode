@@ -6,27 +6,26 @@
 # Package dependencies from nmk project files
 #
 
-nmk-base
 black
-isort
 flake8
-pep8-naming
-flake8-builtins
 flake8-blind-except
-flake8-comprehensions
-flake8-string-format
-flake8-pep3101
 flake8-bugbear
-setuptools
-wheel
+flake8-builtins
+flake8-comprehensions
+flake8-pep3101
+flake8-string-format
+isort
+myst-parser
 nmk-base
-pytest-xdist
+nmk-vscode
+pep8-naming
 pytest-cov
 pytest-multilog
+pytest-xdist
+setuptools
 sphinx
-sphinx_rtd_theme
-myst-parser
 sphinx-autoapi
-nmk-vscode
+sphinx_rtd_theme
+wheel
 
 
