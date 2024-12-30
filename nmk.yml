@@ -22,17 +22,18 @@ config:
     pythonPackageRequirements:
         - nmk-base
 
-    # Extra setup data
-    pythonSetupItems:
-        metadata:
+    # Extra project data
+    pythonProjectFileItems:
+        project:
             description: VSCode plugin for nmk build system
-        options.package_data:
-            nmk_vscode: "*.yml,*.json"
-            nmk_vscode.templates: "*"
-        options.entry_points:
-            buildenv_init: "\nnmk-vscode = nmk_vscode.buildenv:BuildEnvInit"
-        run:
-            omit: "src/tests/*,src/nmk_vscode/templates/*"
+            entry-points:
+                buildenv_init:
+                    nmk-vscode: nmk_vscode.buildenv:BuildEnvInit
+        tool:
+            coverage:
+                run:
+                    omit:
+                        - src/nmk_vscode/templates/*
 
     # Github issues logged in nmk project
     githubIssuesRepo: nmk

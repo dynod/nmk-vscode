@@ -4,7 +4,6 @@ Python module for **nmk-vscode** plugin builders.
 
 import json
 from pathlib import Path
-from typing import List
 
 from nmk_base.common import TemplateBuilder
 
@@ -43,7 +42,7 @@ class JsonTemplateBuilder(TemplateBuilder):
                 # New key
                 settings[k] = v
 
-    def build_json(self, files: List[str], items: dict = None, keywords: dict = None):
+    def build_json(self, files: list[str], items: dict = None, keywords: dict = None):
         """
         Generate target json file by merging provided files, then items (if any)
 
@@ -75,7 +74,7 @@ class SettingsBuilder(JsonTemplateBuilder):
     Builder for **vs.settings** task
     """
 
-    def build(self, files: List[str], items: dict):
+    def build(self, files: list[str], items: dict):
         """
         Build logic: merge provided settings files and items
 
@@ -90,7 +89,7 @@ class LaunchBuilder(JsonTemplateBuilder):
     Builder for **vs.launch** task
     """
 
-    def build(self, files: List[str]):
+    def build(self, files: list[str]):
         """
         Build logic: merge provided launch configuration files
 
@@ -104,7 +103,7 @@ class TasksBuilder(JsonTemplateBuilder):
     Builder for **vs.tasks** task
     """
 
-    def build(self, files: List[str], task_template: str, nmk_tasks: dict, shell_tasks: dict, default_task: str):
+    def build(self, files: list[str], task_template: str, nmk_tasks: dict, shell_tasks: dict, default_task: str):
         """
         Build logic: merge provided automated tasks files, then add generated nmk automated tasks
 
@@ -117,8 +116,8 @@ class TasksBuilder(JsonTemplateBuilder):
 
         # Handle default values in nmk tasks
         for props in nmk_tasks.values():
-            props["group"] = props["group"] if "group" in props else "build"
-            props["runOn"] = props["runOn"] if "runOn" in props else "default"
+            props["group"] = props.get("group", "build")
+            props["runOn"] = props.get("runOn", "default")
 
         # Build with keyword
         self.build_json([task_template] + files, keywords={"nmkTasks": nmk_tasks, "shellTasks": shell_tasks, "defaultTask": default_task})
@@ -129,7 +128,7 @@ class ExtensionsBuilder(JsonTemplateBuilder):
     Builder for **vs.extensions** task
     """
 
-    def build(self, names: List[str]):
+    def build(self, names: list[str]):
         """
         Build logic: generated recommended extensions file from provided names
 
