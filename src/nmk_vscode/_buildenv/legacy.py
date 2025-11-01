@@ -47,7 +47,9 @@ class BuildEnvInit(BuildEnvExtension):
                 script_path = cp.stdout.splitlines()[0].strip()
                 if Path(script_path).is_file():
                     # Add activation script
-                    self.manager.add_activation_file("vscode", ".sh", Path(__file__).parent / "templates" / "vscode.sh.jinja", {"vscodeScript": script_path})
+                    self.manager.add_activation_file(
+                        "vscode", ".sh", Path(__file__).parent.parent / "_templates" / "vscode.sh.jinja", {"vscodeScript": script_path}
+                    )
                 else:
                     _logger.warning(f"nmk-vscode: bash init script not found: {script_path}")
             else:
