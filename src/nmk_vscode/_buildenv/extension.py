@@ -38,8 +38,9 @@ class NmkVsCodeBuildEnvExtension(BuildEnvExtension):
             )
             if cp.returncode == 0:
                 # Check for returned script path
-                script_path = cp.stdout.splitlines()[0].strip()
-                if Path(script_path).is_file():
+                output_lines = cp.stdout.splitlines()
+                script_path = cp.stdout.splitlines()[0].strip() if output_lines else None
+                if script_path and Path(script_path).is_file():
                     # Add activation script
                     renderer.render(Environment(loader=PackageLoader("nmk_vscode", "_templates")), "vscode.sh.jinja", keywords={"vscodeScript": script_path})
                 else:
