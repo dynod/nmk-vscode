@@ -1,7 +1,7 @@
-{
+{{ "{" }}{% if venvName %}
     "files.watcherExclude": {
-        "**/venv/**": true
-    },
+        "**/{{ venvName }}/**": true
+    },{% endif %}
     "editor.formatOnSave": true,
     "cSpell.words": [],
     "task.allowAutomaticTasks": "on",
