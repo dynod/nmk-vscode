@@ -27,6 +27,9 @@ config:
     # Default build task
     vscodeDefaultBuildTask: build
 
+    # Default test task
+    vscodeDefaultTestTask: tests
+
 tasks:
     # Tasks generation
     vs.tasks:
@@ -44,5 +47,7 @@ tasks:
             task_template: ${vscodeTaskTemplate}
             nmk_tasks: ${vscodeNmkTasks}
             shell_tasks: ${vscodeShellTasks}
-            default_task: ${vscodeDefaultBuildTask}
+            default_tasks:
+                - ${vscodeDefaultBuildTask}
+                - ${vscodeDefaultTestTask}
         builder: nmk_vscode.builders.TasksBuilder

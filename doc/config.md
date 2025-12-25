@@ -116,7 +116,18 @@ This a dictionary defining the simple shell tasks to be generated into the targe
 |-     |-
 | str  | build
 
-This is the name of the generated task to be declared as default (the one invoked when hitting **`Ctrl+shift+B`** in VSCode) in the target {ref}`${vscodeTasks}<vscodeTasks>` generated file.
+This is the name of the generated task to be declared as default build one (the one invoked when hitting **`Ctrl+shift+B`** in VSCode) in the target {ref}`${vscodeTasks}<vscodeTasks>` generated file.
+
+(vscodeDefaultTestTask)=
+### **`vscodeDefaultTestTask`** -- Default build task
+
+| Type | Default value |
+|-     |-
+| str  | tests
+
+This is the name of the generated task to be declared as default test one (the one invoked when hitting **`Ctrl+shift+T`** in VSCode) in the target {ref}`${vscodeTasks}<vscodeTasks>` generated file.
+
+*<span style="color:green">Added in version 1.1.0</span>*
 
 ## Launch configurations
 

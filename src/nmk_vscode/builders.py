@@ -4,6 +4,7 @@ Python module for **nmk-vscode** plugin builders.
 
 import json
 from pathlib import Path
+from typing import Any
 
 from nmk_base.common import TemplateBuilder
 
@@ -13,7 +14,7 @@ class JsonTemplateBuilder(TemplateBuilder):
     Generic build logic to generate VSCode json config files
     """
 
-    def contribute(self, settings: dict, update: dict):
+    def contribute(self, settings: dict[str, Any], update: dict[str, Any]):
         """
         Merge settings from **update** dictionary into **settings** one.
         Merge logic for existing settings is:
@@ -42,7 +43,7 @@ class JsonTemplateBuilder(TemplateBuilder):
                 # New key
                 settings[k] = v
 
-    def build_json(self, files: list[str], items: dict = None, keywords: dict = None):
+    def build_json(self, files: list[str], items: dict[str, Any] | None = None, keywords: dict[str, Any] | None = None):
         """
         Generate target json file by merging provided files, then items (if any)
 
@@ -52,7 +53,7 @@ class JsonTemplateBuilder(TemplateBuilder):
         """
 
         # Iterate on files to merge them
-        json_model = {}
+        json_model: dict[str, Any] = {}
         for file_p in map(Path, files):
             self.logger.debug(f"Loading json model fragment: {file_p}")
             self.contribute(json_model, json.loads(self.render_template(file_p, {} if keywords is None else keywords)))
@@ -74,7 +75,7 @@ class SettingsBuilder(JsonTemplateBuilder):
     Builder for **vs.settings** task
     """
 
-    def build(self, files: list[str], items: dict):
+    def build(self, files: list[str], items: dict[str, Any]):  # type: ignore
         """
         Build logic: merge provided settings files and items
 
@@ -89,7 +90,7 @@ class LaunchBuilder(JsonTemplateBuilder):
     Builder for **vs.launch** task
     """
 
-    def build(self, files: list[str]):
+    def build(self, files: list[str]):  # type: ignore
         """
         Build logic: merge provided launch configuration files
 
@@ -103,7 +104,7 @@ class TasksBuilder(JsonTemplateBuilder):
     Builder for **vs.tasks** task
     """
 
-    def build(self, files: list[str], task_template: str, nmk_tasks: dict, shell_tasks: dict, default_task: str):
+    def build(self, files: list[str], task_template: str, nmk_tasks: dict[str, Any], shell_tasks: dict[str, Any], default_tasks: list[str]):  # type: ignore
         """
         Build logic: merge provided automated tasks files, then add generated nmk automated tasks
 
@@ -111,7 +112,7 @@ class TasksBuilder(JsonTemplateBuilder):
         :param task_template: Path to Jinja template for nmk tasks
         :param nmk_tasks: Dictionary for nmk tasks definitions
         :param shell_tasks: Dictionary for shell tasks definitions
-        :param default_task: Name of task to be declared as the default one in generated file
+        :param default_tasks: List of default tasks to be identified as such in generated file
         """
 
         # Handle default values in nmk tasks
@@ -120,7 +121,7 @@ class TasksBuilder(JsonTemplateBuilder):
             props["runOn"] = props.get("runOn", "default")
 
         # Build with keyword
-        self.build_json([task_template] + files, keywords={"nmkTasks": nmk_tasks, "shellTasks": shell_tasks, "defaultTask": default_task})
+        self.build_json([task_template] + files, keywords={"nmkTasks": nmk_tasks, "shellTasks": shell_tasks, "defaultTasks": default_tasks})
 
 
 class ExtensionsBuilder(JsonTemplateBuilder):
@@ -128,7 +129,7 @@ class ExtensionsBuilder(JsonTemplateBuilder):
     Builder for **vs.extensions** task
     """
 
-    def build(self, names: list[str]):
+    def build(self, names: list[str]):  # type: ignore
         """
         Build logic: generated recommended extensions file from provided names
 
