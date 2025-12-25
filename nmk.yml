@@ -1,40 +1,40 @@
 refs:
-    # Base+python plugins (+current one)
-    - pip://nmk-badges!plugin.yml
-    - pip://nmk-github!plugin.yml
-    - pip://nmk-python!plugin.yml
-    - pip://nmk-doc!plugin.yml
-    - src/nmk_vscode/plugin.yml
-    - <workspace>/shared.yml
-    - workspace:
-        local: ../../../../shared
-        remote: github://dynod/workspace/main/shared
+  # Base+python plugins (+current one)
+  - pip://nmk-badges!plugin.yml
+  - pip://nmk-github!plugin.yml
+  - pip://nmk-python!plugin.yml
+  - pip://nmk-doc!plugin.yml
+  - src/nmk_vscode/plugin.yml
+  - <workspace>/shared.yml
+  - workspace:
+      local: ../../../../shared
+      remote: github://dynod/workspace/main/shared
 
 # Python path for locally defined tasks
 path:
-    - src
+  - src
 
 config:
-    # Python package
-    pythonPackage: nmk-vscode
-    
-    # Nmk dependencies
-    pythonPackageRequirements:
-        - nmk-base
+  # Python package
+  pythonPackage: nmk-vscode
 
-    # Extra project data
-    pythonProjectFileItems:
-        project:
-            description: VSCode plugin for nmk build system
-            entry-points:
-                buildenv_init:
-                    nmk-vscode: nmk_vscode.buildenv:BuildEnvInit
-        tool:
-            coverage:
-                run:
-                    omit:
-                        - src/nmk_vscode/templates/*
+  # Nmk dependencies
+  pythonPackageRequirements:
+    - nmk-base
 
-    # Github issues logged in nmk project
-    githubIssuesRepo: nmk
-    githubIssuesLabel: "plugin:vscode"
+  # Extra project data
+  pythonProjectFileItems:
+    project:
+      description: VSCode plugin for nmk build system
+      entry-points:
+        buildenv_init:
+          nmk-vscode: nmk_vscode.buildenv:BuildEnvInit
+    tool:
+      coverage:
+        run:
+          omit:
+            - src/nmk_vscode/templates/*
+
+  # Github issues logged in nmk project
+  githubIssuesRepo: nmk
+  githubIssuesLabel: "plugin:vscode"

@@ -3,6 +3,9 @@
         "**/venv/**": true
     },
     "editor.formatOnSave": true,
+    "[yaml]": {
+        "editor.defaultFormatter": "prettier.prettier-vscode"
+    },
     "cSpell.words": [],
     "task.allowAutomaticTasks": "on",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
