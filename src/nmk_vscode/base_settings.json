@@ -27,5 +27,6 @@
                 ".buildenv\\shell.cmd"
             ]
         }
-    }
+    },
+    "python.terminal.activateEnvironment": false
 }
