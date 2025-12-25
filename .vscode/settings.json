@@ -57,6 +57,7 @@
             ]
         }
     },
+    "python.terminal.activateEnvironment": false,
     "cSpell.allowCompoundWords": true,
     "cSpell.enableFiletypes": [
         "yaml",
