@@ -5,7 +5,7 @@
             "label": "nmk {{ name }}",
             "type": "shell",
             "command": "source .buildenv/activate.sh && nmk {{ name }}",
-            "group": {% if name == defaultTask %}{
+            "group": {% if name in defaultTasks %}{
                 "kind": "{{ nmkTasks[name].group }}",
                 "isDefault": true
             }{% else %}"{{ nmkTasks[name].group }}"{% endif %},
@@ -25,7 +25,7 @@
             "label": "{{ name }}",
             "type": "shell",
             "command": "{{ shellTasks[name].command }}",
-            "group": {% if name == defaultTask %}{
+            "group": {% if name in defaultTasks %}{
                 "kind": "{{ shellTasks[name].group }}",
                 "isDefault": true
             }{% else %}"{{ shellTasks[name].group }}"{% endif %},
