@@ -9,7 +9,7 @@ refs:
 config:
   # Plugin version
   nmkVSCodePluginVersion:
-    __resolver__: nmk_vscode.NmkVSCodeVersionResolver
+    __resolver__: nmk_vscode._version.NmkVSCodeVersionResolver
 
   # Plugin versions dict
   nmkPluginsVersions:

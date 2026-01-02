@@ -1,7 +1,7 @@
-{
+{{ "{" }}{% if venvName %}
     "files.watcherExclude": {
-        "**/venv/**": true
-    },
+        "**/{{ venvName }}/**": true
+    },{% endif %}
     "editor.formatOnSave": true,
     "[yaml]": {
         "editor.defaultFormatter": "prettier.prettier-vscode"
@@ -11,23 +11,30 @@
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.profiles.linux": {
         "bash": {
-            "args": [
+            "args": [{% if backendLegacy %}
                 "--init-file",
-                ".buildenv/shell.sh"
+                ".buildenv/shell.sh"{% else %}
+                "./buildenv.sh",
+                "shell"{% endif %}
             ]
         }
     },
     "terminal.integrated.profiles.windows": {
         "Git Bash": {
-            "args": [
+            "args": [{% if backendLegacy %}
                 "--init-file",
-                ".buildenv/shell.sh"
+                ".buildenv/shell.sh"{% else %}
+                "./buildenv.sh",
+                "shell"{% endif %}
             ]
         },
         "Command Prompt": {
-            "args": [
+            "args": [{% if backendLegacy %}
                 "/k",
-                ".buildenv\\shell.cmd"
+                ".buildenv\\shell.cmd"{% else %}
+                "/c",
+                "buildenv.cmd",
+                "shell"{% endif %}
             ]
         }
     },

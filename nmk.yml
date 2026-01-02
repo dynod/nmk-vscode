@@ -27,13 +27,16 @@ config:
     project:
       description: VSCode plugin for nmk build system
       entry-points:
-        buildenv_init:
-          nmk-vscode: nmk_vscode.buildenv:BuildEnvInit
+        buildenv_init: # buildenv <2 extension
+          nmk-vscode: nmk_vscode._buildenv.legacy:BuildEnvInit
+        buildenv_extension: # buildenv >=2 extension
+          nmk-vscode: nmk_vscode._buildenv.extension:NmkVsCodeBuildEnvExtension
     tool:
       coverage:
         run:
           omit:
-            - src/nmk_vscode/templates/*
+            - src/nmk_vscode/_templates/*
+            - src/nmk_vscode/_buildenv/extension.py
 
   # Github issues logged in nmk project
   githubIssuesRepo: nmk
