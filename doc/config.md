@@ -30,9 +30,9 @@ This is the generated [VSCode workspace settings file](https://code.visualstudio
 
 ### **`vscodeSettingsFiles`** -- VSCode settings files fragments
 
-| Type      | Default value                     |
-| --------- | --------------------------------- |
-| List[str] | ["${BASEDIR}/base_settings.json"] |
+| Type      | Default value                                      |
+| --------- | -------------------------------------------------- |
+| List[str] | ["${BASEDIR}/_templates/base_settings.json.jinja"] |
 
 This is a list of VSCode settings file fragments to be merged into the target {ref}`${vscodeSettings}<vscodeSettings>` generated one.
 
@@ -96,7 +96,7 @@ This is a list of VSCode task files to be merged into the target {ref}`${vscodeT
 
 | Type | Default value                             |
 | ---- | ----------------------------------------- |
-| str  | ${BASEDIR}/templates/nmk-tasks.json.jinja |
+| str  | "${BASEDIR}/\_templates/tasks.json.jinja" |
 
 This is the template file for generated nmk tasks.
 

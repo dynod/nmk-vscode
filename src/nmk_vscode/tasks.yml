@@ -6,7 +6,7 @@ config:
   vscodeTasksFiles: []
 
   # Template for nmk specific tasks
-  vscodeTaskTemplate: ${BASEDIR}/templates/tasks.json.jinja
+  vscodeTaskTemplate: ${BASEDIR}/_templates/tasks.json.jinja
 
   # List of "nmk" specific tasks to generate
   vscodeNmkTasks:

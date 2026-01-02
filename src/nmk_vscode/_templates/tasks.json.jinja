@@ -4,7 +4,7 @@
     {% if loop.index > 1 %},{% endif %}{
             "label": "nmk {{ name }}",
             "type": "shell",
-            "command": "source .buildenv/activate.sh && nmk {{ name }}",
+            "command": "{% if backendLegacy %}source .buildenv/activate.sh && {% endif %}nmk {{ name }}",
             "group": {% if name in defaultTasks %}{
                 "kind": "{{ nmkTasks[name].group }}",
                 "isDefault": true

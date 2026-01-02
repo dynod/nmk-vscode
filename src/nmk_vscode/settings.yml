@@ -7,7 +7,7 @@ config:
 
   # List of VSCode settings files to be merged
   vscodeSettingsFiles:
-    - ${BASEDIR}/base_settings.json
+    - ${BASEDIR}/_templates/base_settings.json.jinja
 
   # Dict of VSCode settings items to be merged
   vscodeSettingsItems: {}
