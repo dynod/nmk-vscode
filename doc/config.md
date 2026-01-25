@@ -62,9 +62,9 @@ This is the generated [VSCode workspace recommended extensions file](https://cod
 
 ### **`vscodeExtensionsNames`** -- VSCode recommended extensions list
 
-| Type      | Default value                                                                                        |
-| --------- | ---------------------------------------------------------------------------------------------------- |
-| List[str] | ["prettier.prettier-vscode"]<br> <br>_<span style="color:green">Last update in version 1.1.0</span>_ |
+| Type      | Default value                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------- |
+| List[str] | ["esbenp.prettier-vscode"]<br> <br>_<span style="color:green">Last update in version 1.1.0</span>_ |
 
 List of VSCode recommended extensions to be generated in target {ref}`${vscodeExtensions}<vscodeExtensions>` file.
 

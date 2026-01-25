@@ -5,7 +5,7 @@
         "charliermarsh.ruff",
         "ms-python.python",
         "ms-vscode.live-server",
-        "prettier.prettier-vscode",
+        "esbenp.prettier-vscode",
         "eamodio.gitlens",
         "streetsidesoftware.code-spell-checker"
     ]
