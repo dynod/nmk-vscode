@@ -3,7 +3,7 @@ config:
   vscodeExtensions: ${vscodeFolder}/extensions.json
 
   # List of VSCode extensions to be recommended
-  vscodeExtensionsNames: ["prettier.prettier-vscode"]
+  vscodeExtensionsNames: ["esbenp.prettier-vscode"]
 
 tasks:
   # Recommended extensions file generation
