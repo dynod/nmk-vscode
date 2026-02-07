@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 
 from _pytest.monkeypatch import MonkeyPatch
-from buildenv2.extension import BuildEnvInfo, BuildEnvRenderer
+from buildenv.extension import BuildEnvInfo, BuildEnvRenderer
 from jinja2 import Environment
 from nmk.tests.tester import NmkBaseTester
 

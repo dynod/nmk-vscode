@@ -3,8 +3,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from buildenv2._utils import LOGGER_NAME
-from buildenv2.extension import BuildEnvExtension, BuildEnvRenderer
+from buildenv._utils import LOGGER_NAME
+from buildenv.extension import BuildEnvExtension, BuildEnvRenderer
 from jinja2 import Environment, PackageLoader
 
 # Logger instance

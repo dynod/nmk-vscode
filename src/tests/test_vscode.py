@@ -3,12 +3,10 @@ import subprocess
 from pathlib import Path
 
 from _pytest.monkeypatch import MonkeyPatch
-from buildenv import BuildEnvManager
 from nmk.tests.tester import NmkBaseTester
 from nmk.utils import is_windows
 
 from nmk_vscode import __version__
-from nmk_vscode._buildenv.legacy import BuildEnvInit
 
 
 class TestVSCodePlugin(NmkBaseTester):
@@ -55,6 +53,11 @@ class TestVSCodePlugin(NmkBaseTester):
         assert (self.test_folder / ".vscode" / "extensions.json").is_file()
 
     def test_buildenv_extension_legacy(self, monkeypatch: MonkeyPatch):
+        # Imports for legacy extension
+        from buildenv import BuildEnvManager
+
+        from nmk_vscode._buildenv.legacy import BuildEnvInit
+
         # Prepare extension instance
         fake_venv_bin = self.test_folder / "venv" / ("Scripts" if is_windows() else "bin")
         if fake_venv_bin.is_dir():
