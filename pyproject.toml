@@ -36,6 +36,9 @@ nmk-vscode = "nmk_vscode._buildenv.legacy:BuildEnvInit"
 [project.entry-points.buildenv_extension]
 nmk-vscode = "nmk_vscode._buildenv.extension:NmkVsCodeBuildEnvExtension"
 
+[project.entry-points.buildenv_template]
+nmk-vscode = "nmk_vscode._buildenv.template:NmkVsCodeProjectTemplate"
+
 [dependency-groups]
 dev = ["nmk-badges", "nmk-doc", "nmk-github", "nmk-python", "nmk-vscode", "sphinx-autoapi"]
 
@@ -76,4 +79,4 @@ data_file = "out/.coverage"
 concurrency = ["thread"]
 disable_warnings = ["no-data-collected"]
 branch = true
-omit = ["src/tests/*", "src/nmk_vscode/_templates/*", "src/nmk_vscode/_buildenv/extension.py"]
+omit = ["src/tests/*", "src/nmk_vscode/_templates/*", "src/nmk_vscode/_buildenv/extension.py", "src/nmk_vscode/_buildenv/template.py"]
