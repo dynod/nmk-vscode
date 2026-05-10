@@ -9,6 +9,16 @@ class NmkVsCodeProjectTemplate(NmkBaseProjectTemplate):
     """
 
     @property
+    def weight(self) -> int:
+        # Not a main template
+        return 0
+
+    @property
+    def auto_extra(self) -> bool:
+        # Default extra
+        return True
+
+    @property
     def references(self) -> list[NmkReference]:
         return super().references + [NmkReference("nmk-vscode!plugin.yml", ["nmk-base!plugin.yml"])]
 

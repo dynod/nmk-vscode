@@ -8,6 +8,11 @@ Only interface and important behavior changes are listed here.
 The fully detailed changelog is also available on [Github](https://github.com/dynod/nmk-vscode/releases)
 ```
 
+## Release 1.4.X
+
+- Change documentation template
+- Add buildenv 2.0 install template preliminary support
+
 ## Release 1.2.0
 
 - Update for buildenv 2 handling:
