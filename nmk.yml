@@ -32,7 +32,7 @@ config:
         buildenv_extension: # buildenv >=2 extension
           nmk-vscode: nmk_vscode._buildenv.extension:NmkVsCodeBuildEnvExtension
         buildenv_template: # buildenv >=2 template
-          nmk-vscode: nmk_vscode._buildenv.template:NmkVsCodeProjectTemplate
+          nmk.vscode: nmk_vscode._buildenv.template:NmkVsCodeProjectTemplate
     tool:
       coverage:
         run:

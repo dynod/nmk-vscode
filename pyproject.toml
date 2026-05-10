@@ -37,7 +37,7 @@ nmk-vscode = "nmk_vscode._buildenv.legacy:BuildEnvInit"
 nmk-vscode = "nmk_vscode._buildenv.extension:NmkVsCodeBuildEnvExtension"
 
 [project.entry-points.buildenv_template]
-nmk-vscode = "nmk_vscode._buildenv.template:NmkVsCodeProjectTemplate"
+"nmk.vscode" = "nmk_vscode._buildenv.template:NmkVsCodeProjectTemplate"
 
 [dependency-groups]
 dev = ["nmk-badges", "nmk-doc", "nmk-github", "nmk-python", "nmk-vscode", "sphinx-autoapi"]
