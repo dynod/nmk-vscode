@@ -106,11 +106,27 @@ This is the generated [VSCode workspace custom tasks file](https://code.visualst
 
 ### **`vscodeTasksFiles`** -- VSCode task files
 
-| Type      | Default value |
-| --------- | ------------- |
-| List[str] | []            |
+| Type      | Default value                                                                                              |
+| --------- | ---------------------------------------------------------------------------------------------------------- |
+| List[str] | ["{ref}`${vscodeTaskTemplate}<vscodeTaskTemplate>`", "{ref}`${vscodeSetupTaskFile}<vscodeSetupTaskFile>`"] |
 
 This is a list of VSCode task files to be merged into the target {ref}`${vscodeTasks}<vscodeTasks>` generated one.
+
+_<span style="color:orange">Changed in version 1.4.4</span>_ -- Previous value was `[]`
+
+---
+
+(vscodeSetupTaskFile)=
+
+### **`vscodeSetupTaskFile`** -- Setup task definition file
+
+| Type | Default value                             |
+| ---- | ----------------------------------------- |
+| str  | "${BASEDIR}/\_templates/setup.json.jinja" |
+
+Setup task file definition file.
+
+_<span style="color:green">Added in version 1.4.4</span>_
 
 ---
 

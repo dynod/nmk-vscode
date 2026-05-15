@@ -20,7 +20,7 @@
                 "showReuseMessage": false,
                 "clear": false
             }
-        }{% endfor %},{% for name in shellTasks.keys() %}
+        }{% endfor %}{% if shellTasks|length > 0 %},{% for name in shellTasks.keys() %}
     {% if loop.index > 1 %},{% endif %}{
             "label": "{{ name }}",
             "type": "shell",
@@ -40,6 +40,6 @@
                 "showReuseMessage": false,
                 "clear": false
             }
-        }{% endfor %}
+        }{% endfor %}{% endif %}
     ]
 }

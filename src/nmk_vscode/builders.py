@@ -43,7 +43,7 @@ class JsonTemplateBuilder(TemplateBuilder):
                 # New key
                 settings[k] = v
 
-    def build_json(self, files: list[str], items: dict[str, Any] | None = None, keywords: dict[str, Any] | None = None):
+    def build_json(self, files: list[str] | list[Path], items: dict[str, Any] | None = None, keywords: dict[str, Any] | None = None):
         """
         Generate target json file by merging provided files, then items (if any)
 
@@ -104,7 +104,7 @@ class TasksBuilder(JsonTemplateBuilder):
     Builder for **vs.tasks** task
     """
 
-    def build(self, files: list[str], task_template: str, nmk_tasks: dict[str, Any], shell_tasks: dict[str, Any], default_tasks: list[str]):  # type: ignore
+    def build(self, nmk_tasks: dict[str, Any], shell_tasks: dict[str, Any], default_tasks: list[str]):  # type: ignore
         """
         Build logic: merge provided automated tasks files, then add generated nmk automated tasks
 
@@ -116,12 +116,12 @@ class TasksBuilder(JsonTemplateBuilder):
         """
 
         # Handle default values in nmk tasks
-        for props in nmk_tasks.values():
+        for props in list(nmk_tasks.values()) + list(shell_tasks.values()):
             props["group"] = props.get("group", "build")
             props["runOn"] = props.get("runOn", "default")
 
         # Build with keyword
-        self.build_json([task_template] + files, keywords={"nmkTasks": nmk_tasks, "shellTasks": shell_tasks, "defaultTasks": default_tasks})
+        self.build_json(self.inputs, keywords={"nmkTasks": nmk_tasks, "shellTasks": shell_tasks, "defaultTasks": default_tasks})
 
 
 class ExtensionsBuilder(JsonTemplateBuilder):
